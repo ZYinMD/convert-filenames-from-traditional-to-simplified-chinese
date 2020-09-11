@@ -8,12 +8,8 @@ processEntry(targetPath);
 
 function processEntry(entryPath) {
 	const stat = fs.statSync(entryPath);
-	if (stat.isFile()) {
-		processFile(entryPath);
-	}
-	if (stat.isDirectory()) {
-		processDir(entryPath);
-	}
+	if (stat.isFile()) processFile(entryPath);
+	if (stat.isDirectory()) processDir(entryPath);
 }
 
 function processDir(dirPath) {
