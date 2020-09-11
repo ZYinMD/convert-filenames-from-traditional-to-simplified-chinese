@@ -3,35 +3,16 @@
 	"version": "1.0.0",
 	"description": "recursively rename all files in a directory, changing all traditional Chinese characters into simplified versions, leaving non Chinese characters alone",
 	"author": "ZYinMD",
-	"main": "dist/rename.js",
+	"main": "rename.js",
 	"files": [
 		"dist"
 	],
 	"license": "MIT",
-	"scripts": {
-		"delete-build-folder": "rm --recursive --force build",
-		"clean-build": "npm run delete-build-folder && npm run build",
-		"build": "tsc",
-		"prebuild": "npm run lint",
-		"lint": "eslint src/",
-		"start": "node dist/rename.js",
-		"test": "jest --watch"
-	},
-	"engines": {
-		"node": ">=12.12.0"
-	},
 	"dependencies": {
 		"chinese_convert": "^1.0.8"
 	},
 	"devDependencies": {
-		"@types/jest": "^26.0.13",
-		"@typescript-eslint/eslint-plugin": "^4.1.0",
-		"@typescript-eslint/parser": "^4.1.0",
 		"eslint": "^7.8.1",
-		"eslint-config-prettier": "^6.11.0",
-		"eslint-plugin-jest": "^24.0.0",
-		"jest": "^26.4.2",
-		"prettier": "^2.1.1",
-		"typescript": "^4.0.2"
+		"eslint-config-prettier": "^6.11.0"
 	}
 }

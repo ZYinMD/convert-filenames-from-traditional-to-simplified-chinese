@@ -9,6 +9,5 @@
 		"package-lock.json": true,
 		"yarn.lock": true,
 		"somefile_that_I_dont_want_to_search": true
-	},
-	"cSpell.words": ["opendir"]
+	}
 }
