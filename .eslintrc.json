@@ -1,17 +1,7 @@
 {
 	"root": true,
-	"extends": [
-		"eslint:recommended",
-		"plugin:node/recommended",
-		"prettier" // Uses eslint-config-prettier to disable ESLint rules that conflict with prettier
-	],
-	"plugins": [],
-	"parserOptions": {
-		"ecmaFeatures": {}
-	},
+	"extends": ["eslint:recommended", "plugin:node/recommended", "prettier"],
 	"env": {
-		"node": true,
-		"es2020": true
-	},
-	"rules": {}
+		"node": true
+	}
 }
