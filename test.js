@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const convert = require('chinese_convert');
 
 const targetPath = process.argv[2];
 
@@ -22,6 +23,10 @@ function processDir(dirPath) {
 }
 
 function processFile(filePath) {
-	const relativePath = path.relative(targetPath, filePath);
-	console.log(relativePath);
+	const name = path.parse(filePath).name;
+	const converted = convert.tw2cn(name);
+	if (converted !== name) {
+		const relativePath = path.relative(targetPath, filePath);
+		console.log(relativePath, ' => ', converted);
+	}
 }
