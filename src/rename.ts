@@ -1,17 +1,18 @@
 import { promises as fs } from 'fs';
+import path from 'path';
 
-main();
+const targetPath = process.argv[2];
+processDir(targetPath);
 
-async function main() {
-	const targetPath = process.argv[2];
-	if (targetPath) {
-		return processDir(targetPath);
-	} else console.error('Please check README.md about syntax');
-}
-
-async function processDir(path: string) {
-	const dir = await fs.opendir(path);
+async function processDir(dirPath: string) {
+	const dir = await fs.opendir(dirPath);
 	for await (const dirent of dir) {
-		console.log('name', dirent.name, 'isFile', dirent.isFile());
+		const direntPath = path.join(dirPath, dirent.name);
+		if (dirent.isFile()) {
+			console.log(direntPath);
+		}
+		if (dirent.isDirectory()) {
+			processDir(direntPath);
+		}
 	}
 }
