@@ -9,7 +9,8 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"chinese_convert": "^1.0.8"
+		"chinese_convert": "^1.0.8",
+		"recursive-readdir": "^2.2.2"
 	},
 	"devDependencies": {
 		"eslint": "^7.8.1",

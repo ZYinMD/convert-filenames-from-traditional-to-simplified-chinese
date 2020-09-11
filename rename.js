@@ -1,24 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const convert = require('chinese_convert');
+const recursive = require('recursive-readdir');
 
-const targetPath = process.argv[2];
+recursive(process.argv[2]).then((files) => files.forEach(rename));
 
-processEntry(targetPath);
-
-function processEntry(entryPath) {
-	const stat = fs.statSync(entryPath);
-	if (stat.isFile()) processFile(entryPath);
-	if (stat.isDirectory()) processDir(entryPath);
-}
-
-function processDir(dirPath) {
-	fs.readdirSync(dirPath)
-		.map((filename) => path.join(dirPath, filename))
-		.forEach(processEntry);
-}
-
-function processFile(filePath) {
+function rename(filePath) {
 	const { dir, name, ext } = path.parse(filePath);
 	const converted = convert.tw2cn(name);
 	if (converted !== name) {
