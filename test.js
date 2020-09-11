@@ -4,7 +4,7 @@ const convert = require('chinese_convert');
 
 const targetPath = process.argv[2];
 
-processDir(targetPath);
+processEntry(targetPath);
 
 function processEntry(entryPath) {
 	const stat = fs.statSync(entryPath);
@@ -23,10 +23,11 @@ function processDir(dirPath) {
 }
 
 function processFile(filePath) {
-	const name = path.parse(filePath).name;
+	const { dir, name, ext } = path.parse(filePath);
 	const converted = convert.tw2cn(name);
 	if (converted !== name) {
-		const relativePath = path.relative(targetPath, filePath);
-		console.log(relativePath, ' => ', converted);
+		const newPath = path.join(dir, converted + ext);
+		fs.renameSync(filePath, newPath);
+		console.log(`converted ${ext} file in directory ${dir}:\n${name}  -->\n${converted}\n`);
 	}
 }
