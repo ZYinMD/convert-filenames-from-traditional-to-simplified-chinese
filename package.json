@@ -3,8 +3,6 @@
 	"version": "1.0.0",
 	"description": "recursively rename all files in a directory, changing all traditional Chinese characters into simplified versions, leaving non Chinese characters alone",
 	"author": "ZYinMD",
-	"main": "rename.js",
-	"license": "MIT",
 	"dependencies": {
 		"chinese_convert": "^1.0.8",
 		"recursive-readdir": "^2.2.2"
